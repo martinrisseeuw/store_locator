@@ -57,7 +57,7 @@ var greenIcon = L.icon({
     iconRetinaUrl: 'marker@2x.png',
 
     iconSize:     [19, 19], // size of the icon
-    iconAnchor:   [19, 19], // point of the icon which will correspond to marker's location
+    iconAnchor:   [9.75, 9.75], // point of the icon which will correspond to marker's location
     popupAnchor:  [-10, -19] // point from which the popup should open relative to the iconAnchor
 });
 
