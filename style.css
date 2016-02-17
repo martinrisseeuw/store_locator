@@ -1,0 +1,95 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  padding: 0;
+  margin: 0;
+  font-family: 'avenir next';
+  background: #d6d6d6;
+}
+#map {
+  width: 66.66%;
+  height: 100vh;
+  left: 33.33%;
+  background: #d6d6d6;
+}
+.leaflet-map-pane{
+background: #d6d6d6;}
+.leaflet-control-attribution{
+  display: none;
+}
+.storelocator{
+  display: flex;
+}
+.storelocator__sidebar{
+  width: 33.33%;
+  background: rgb(120,120,135);
+  color: white;
+  overflow: auto;
+  position: fixed;
+  z-index: 9;
+  height: 100%;
+}
+.storelocator__sidebar input{
+  background: transparent;
+  border: 1px solid white;
+  padding: 20px;
+  color: white;
+  width: 100%;
+  font-size: 1em;
+}
+.storelocator__sidebar__header{
+  background: rgba(50,50,70,1);
+  padding: 80px 60px;
+  margin: 0;
+  position: fixed;
+  width: 33.33%;
+}
+.storelocator__sidebar__header h1{
+  margin: 0 0 .3em;
+  font-size: 1.5em;
+}
+.storelocator__sidebar__header p{
+  margin: 0 0 1em;
+}
+.storelocator__sidebar__list{
+  list-style: none;
+  padding: 40px;
+  position: fixed;
+  width: 33.33%;
+  height: 200px;
+  bottom: 0;
+  overflow: auto;
+  margin: 0;
+}
+.storelocator__sidebar__list li{
+  padding: 20px 0;
+  opacity: .7;
+  border-bottom: 1px solid rgba(255,255,255, .3);
+  transition: .2s ease-in-out;
+}
+.storelocator__sidebar__list li p{
+  margin: 0 0 .2em;
+  font-size: .875em;
+}
+.storelocator__sidebar__list li h2{
+  margin: 0 0 .2em;
+  font-size: 1.2em;
+}
+.storelocator__sidebar__list li:hover{
+  cursor: pointer;
+  opacity: 1;
+  border-bottom: 1px solid rgba(255,255,255, 1);
+}
+::-webkit-input-placeholder {
+    color:    #fff;
+}
+:-moz-placeholder {
+    color:    #fff;
+}
+::-moz-placeholder {
+    color:    #fff;
+}
+:-ms-input-placeholder {
+    color:    #fff;
+}
