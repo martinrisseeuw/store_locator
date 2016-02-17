@@ -8,9 +8,9 @@ body{
   background: #d6d6d6;
 }
 #map {
-  width: 66.66%;
+  width: 75%;
   height: 100vh;
-  left: 33.33%;
+  left: 25%;
   background: #d6d6d6;
 }
 .leaflet-map-pane{
@@ -22,7 +22,7 @@ background: #d6d6d6;}
   display: flex;
 }
 .storelocator__sidebar{
-  width: 33.33%;
+  width: 25%;
   background: rgb(120,120,135);
   color: white;
   overflow: auto;
@@ -40,10 +40,10 @@ background: #d6d6d6;}
 }
 .storelocator__sidebar__header{
   background: rgba(50,50,70,1);
-  padding: 80px 60px;
+  padding: 40px;
   margin: 0;
   position: fixed;
-  width: 33.33%;
+  width: 25%;
 }
 .storelocator__sidebar__header h1{
   margin: 0 0 .3em;
@@ -54,16 +54,17 @@ background: #d6d6d6;}
 }
 .storelocator__sidebar__list{
   list-style: none;
-  padding: 40px;
+  padding: 20px 40px 40px 40px;
   position: fixed;
-  width: 33.33%;
+  width: 25%;
   height: 200px;
   bottom: 0;
   overflow: auto;
   margin: 0;
+  font-size: .875em
 }
 .storelocator__sidebar__list li{
-  padding: 20px 0;
+  padding: 15px 0;
   opacity: .7;
   border-bottom: 1px solid rgba(255,255,255, .3);
   transition: .2s ease-in-out;
