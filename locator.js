@@ -10,7 +10,7 @@ var map = L.map('map', {
 	zoom: 3,
   zoomControl:false,
   maxBounds: bounds
-}).setView([52.1626588, 5.3770023], 3);
+}).setView([ 52.1626588, 5.3770023 ], 7 );
 
 var token = "pk.eyJ1IjoibWFydGluciIsImEiOiJOSlEzS2RZIn0.XIliSNqiTISmBRBvKLf2qg";
 if (!token) {
@@ -95,7 +95,7 @@ function addMarkers(){
     markers.addLayer(marker);
     sidebar.appendChild(listItem);
 
-    listItem.addEventListener( 'mouseover', listItemHover );
+    listItem.addEventListener( 'mouseenter', listItemHover );
 
     function listItemHover( event ) {
       map.setView( new L.LatLng( coordinates[ 1 ], coordinates[ 0 ] ) );
