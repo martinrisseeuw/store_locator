@@ -63,14 +63,15 @@ var greenIcon = L.icon({
 
 // Looping through all markers creating the elements
 function addMarkers(){
-  var searchValue = document.getElementById( 'search' ).value;
+  var searchValue = document.getElementById( 'search' ).value,
+      searchRegex = searchValue && new RegExp( searchValue, 'i' );
 
   markers.clearLayers();
   sidebar.innerHTML ="";
 
   function shouldDrawItem( item ) {
     if( !searchValue ) return true;
-    return searchValue.toLowerCase() === item.geometry.type.toLowerCase();
+    return !!searchRegex.exec( item.properties.adres );
   }
 
   return geojson.forEach( addMarker );
