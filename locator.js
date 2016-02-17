@@ -24,17 +24,7 @@ var gl = L.mapboxGL({
 
 // $('#search').keyup(search, addMarkers);
 //
-$("#search").keyup("keyup", function(e) {
-  //on letter number
-  if (e.which <= 90 && e.which >= 48)
-  {
-    search();
-    addMarkers();
-  }
-  else {
-    markers.clearLayers();
-  }
-});
+$("#search").keyup("keyup", addMarkers );
 
 
 
