@@ -49,7 +49,7 @@ var greenIcon = L.icon({
 
     iconSize:     [19, 19], // size of the icon
     iconAnchor:   [9.75, 9.75], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-10, -19] // point from which the popup should open relative to the iconAnchor
+    popupAnchor:  [0, -5] // point from which the popup should open relative to the iconAnchor
 });
 
 // Looping through all markers creating the elements
@@ -90,6 +90,7 @@ function addMarkers(){
     listItem.appendChild( listItemAddress );
     listItem.appendChild( listItemTelephone );
     listItem.dataset.index = i;
+    listItem.setAttribute("class", "store" + i);
 
     marker.bindPopup(title);
     markers.addLayer(marker);
@@ -98,7 +99,13 @@ function addMarkers(){
     listItem.addEventListener( 'mouseenter', listItemHover );
 
     function listItemHover( event ) {
-      map.setView( new L.LatLng( coordinates[ 1 ], coordinates[ 0 ] ) );
+      map.setView( new L.LatLng( coordinates[ 1 ], coordinates[ 0 ] ), 12
+        // ,{
+        //     pan: { animate: true , duration: 1 },
+        //     zoom: { animate: true  , duration: 10},
+        //     animate: true
+        // }
+      );
     }
   }
 }
@@ -109,4 +116,12 @@ map.addLayer(markers);
 
 
 // Set layout heights and margins
-$('.storelocator__sidebar__list').css("height", $( window ).innerHeight() - $('.storelocator__sidebar__header').innerHeight());
+function resize(){
+  $('.storelocator__sidebar__list').css("height", $( window ).innerHeight() - $('.storelocator__sidebar__header').innerHeight());
+}
+
+window.onresize = function(event) {
+  resize();
+};
+
+resize();
