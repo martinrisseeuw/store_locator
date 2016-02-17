@@ -63,43 +63,45 @@ var greenIcon = L.icon({
 
 // Looping through all markers creating the elements
 function addMarkers(){
-  console.log("executed addMarkers");
-  for (var i = 0; i < geojson.length; i++) {
-      var a = geojson[i];
-      var title = geojson[i].properties.title;
-      var marker = L.marker(new L.LatLng(geojson[i].geometry.coordinates[1], geojson[i].geometry.coordinates[0] ), {
-        title: title,
-        search: geojson[i].geometry.type,
-        icon: greenIcon
-      });
+  var searchValue = document.getElementById( 'search' ).value;
 
-      var listitem = document.createElement("LI"),
-          listitemTitle = document.createElement("H2"),
-          listitemTelephone = document.createElement("P"),
-          listitemAdres = document.createElement("P");
+  markers.clearLayers();
+  sidebar.innerHTML ="";
 
-      listitemTitle.innerHTML = geojson[i].properties.title;
-      listitemAdres.innerHTML = "Address: " + geojson[i].properties.adres;
-      listitemTelephone.innerHTML = "Telephone: " + geojson[i].geometry.coordinates[0];
-      listitem.appendChild(listitemTitle);
-      listitem.appendChild(listitemAdres);
-      listitem.appendChild(listitemTelephone);
-      listitem.setAttribute("data-filter", geojson[i].geometry.coordinates[0]);
+  function shouldDrawItem( item ) {
+    if( !searchValue ) return true;
+    return searchValue.toLowerCase() === item.geometry.type.toLowerCase();
+  }
 
-      marker.bindPopup(title);
-      var searchResult = search();
-      console.log(searchResult);
+  return geojson.forEach( addMarker );
 
-      if (marker.options.search == searchResult){
-        markers.addLayer(marker);
-        console.log(searchResult);
-        sidebar.appendChild(listitem);
-      }
-      else{
-        markers.clearLayers();
-        sidebar.innerHTML ="";
-      }
+  function addMarker( item ) {
+    if( !shouldDrawItem( item ) ) return;
 
+    var title = item.properties.title,
+        coordinates = item.geometry.coordinates,
+        marker = L.marker( new L.LatLng( coordinates[ 1 ], coordinates[ 0 ] ), {
+          title: title,
+          search: item.geometry.type,
+          icon: greenIcon
+        } ),
+        listItem = document.createElement( 'li' ),
+        listItemTitle = document.createElement( 'h2' ),
+        listItemTelephone = document.createElement( 'p' ),
+        listItemAddress = document.createElement( 'p' );
+
+    listItemTitle.textContent = title;
+    listItemAddress.textContent = 'Address: ' + item.properties.adres;
+    listItemTelephone.textContent = 'Telephone: ' + item.geometry.coordinates[ 0 ];
+
+    listItem.appendChild( listItemTitle );
+    listItem.appendChild( listItemAddress );
+    listItem.appendChild( listItemTelephone );
+    listItem.dataset.filter = coordinates[ 0 ];
+
+    marker.bindPopup(title);
+    markers.addLayer(marker);
+    sidebar.appendChild(listItem);
   }
 }
 
