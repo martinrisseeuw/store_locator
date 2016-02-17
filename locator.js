@@ -1,5 +1,6 @@
-var sidebar = document.querySelector(".storelocator__sidebar__list");
-var southWest = L.latLng(-57.136239, -180),
+var sideBarSelector = '.storelocator__sidebar__list',
+    sidebar = document.querySelector( sideBarSelector ),
+    southWest = L.latLng(-57.136239, -180),
     northEast = L.latLng(84.267172, 180),
     bounds = L.latLngBounds(southWest, northEast);
 
@@ -66,7 +67,7 @@ function addMarkers(){
 
   return geojson.forEach( addMarker );
 
-  function addMarker( item ) {
+  function addMarker( item, i ) {
     if( !shouldDrawItem( item ) ) return;
 
     var title = item.properties.title,
@@ -88,11 +89,17 @@ function addMarkers(){
     listItem.appendChild( listItemTitle );
     listItem.appendChild( listItemAddress );
     listItem.appendChild( listItemTelephone );
-    listItem.dataset.filter = coordinates[ 0 ];
+    listItem.dataset.index = i;
 
     marker.bindPopup(title);
     markers.addLayer(marker);
     sidebar.appendChild(listItem);
+
+    listItem.addEventListener( 'mouseover', listItemHover );
+
+    function listItemHover( event ) {
+      map.setView( new L.LatLng( coordinates[ 1 ], coordinates[ 0 ] ) );
+    }
   }
 }
 
