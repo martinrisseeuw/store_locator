@@ -4,10 +4,10 @@ var geojson = [{
         "title": "Kaasfabriek Fablab Alkmaar",
         "description": null,
         "website": "http://kaasfabriek.nl/",
-        "adres": "Pettemerstraat 15, 1823 CW Alkmaar"
+        "adres" : "'t Kadoke NV attn. De Kinderplaneet\nBetekomstraat 15\nBaal  3128\nBelgium"
     },
     "geometry": {
-        "coordinates": [4.7502714, 52.6381561],
+        "coordinates" : [4.7545436, 50.9945555],
         "type": "Point"
     }
 }, {

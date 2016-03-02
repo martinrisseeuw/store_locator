@@ -12,6 +12,8 @@
     <script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
     <script src="leaflet-mapbox-gl.js"></script>
 
+    <script src='bower_components/es6-promise/es6-promise.min.js'></script>
+    <script src='bower_components/fetch/fetch.js'></script>
     <!-- Mapbox GL -->
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.2/mapbox-gl.css' rel='stylesheet' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.2/mapbox-gl.js'></script>
@@ -19,8 +21,6 @@
     <!-- Leaflet.MarkerCluster -->
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
 
-    <!-- test data -->
-    <script src="data.json"></script>
 </head>
 
 <body>
@@ -29,15 +29,20 @@
       <header class="storelocator__sidebar__header">
         <h1>Store locator</h1>
         <p>Search for a city name or postcode</p>
-        <input id="search" type="text" placeholder="Search address">
+        <input id="search" type="text" placeholder="Search for city">
+        <select id="searchcity">
+          <option value="amsterdam">Amsterdam</option>
+        </select>
       </header>
       <ul class="storelocator__sidebar__list">
+        <div class="expand__btn"></div>
         <!-- items are loaded through javascript & json -->
       </ul>
     </aside>
     <div id="map" class="storelocator__map"></div>
   </section>
-<script src="locator.js">
+<script src="locator.js"></script>
+<script src="eventlisteners.js"></script>
 </script>
 </body>
 </html>

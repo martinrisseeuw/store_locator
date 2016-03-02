@@ -1,0 +1,128 @@
+[
+   {
+      "properties":{
+         "address":"Betekomstraat 15, 3128, Baal, BE",
+         "phone": "023-5630986 (tel winkel)",
+         "title": "Naam winkel",
+         "website": "website winkel"
+      },
+      "geometry":{
+         "coordinates":[
+            4.7545436,
+            50.9945555
+         ]
+      }
+   },
+   {
+      "properties":{
+         "address":"Baalsebaan 283, 3128, Baal, BE",
+         "phone": "023-5630986 (tel winkel)",
+         "title": "Naam winkel",
+         "website": "website winkel"
+      },
+      "geometry":{
+         "coordinates":[
+            4.7463669,
+            50.9946466
+         ]
+      }
+   },
+   {
+      "properties":{
+         "address":"St. Petrus en Paulusstraat 2, 8800, Roeselare-Rumbeke, BE",
+         "phone": "023-5630986 (tel winkel)",
+         "title": "Naam winkel",
+         "website": "website winkel"
+      },
+      "geometry":{
+         "coordinates":[
+            3.1555944,
+            50.9338054
+         ]
+      }
+   },
+   {
+      "properties":{
+         "address":"Jahnstrasse 42-44, 95030, Hof, NL",
+         "phone": "023-5630986 (tel winkel)",
+         "title": "Naam winkel",
+         "website": "website winkel"
+      },
+      "geometry":{
+         "coordinates":[
+            6.6602895,
+            51.8173649
+         ]
+      }
+   },
+   {
+      "properties":{
+         "address":"Christian-Ritter-von-Langheinrich-Strasse 14, 95448, Bayreuth, DE",
+         "phone": "023-5630986 (tel winkel)",
+         "title": "Naam winkel",
+         "website": "website winkel"
+      },
+      "geometry":{
+         "coordinates":[
+            11.60931,
+            49.96005
+         ]
+      }
+   },
+   {
+      "properties":{
+         "address":"Kirchgasse 2, 95448, Bayreuth, DE",
+         "phone": "023-5630986 (tel winkel)",
+         "title": "Naam winkel",
+         "website": "website winkel"
+      },
+      "geometry":{
+         "coordinates":[
+            11.574109,
+            49.9443318
+         ]
+      }
+   },
+   {
+      "properties":{
+         "address":"Voldersgracht 5, 2611 ET, Delft, NL",
+         "phone": "023-5630986 (tel winkel)",
+         "title": "Naam winkel",
+         "website": "website winkel"
+      },
+      "geometry":{
+         "coordinates":[
+            4.3580809,
+            52.0118886
+         ]
+      }
+   },
+   {
+      "properties":{
+         "address":"Alborg Storcenter, 9200, Alborg, DK",
+         "phone": "023-5630986 (tel winkel)",
+         "title": "Naam winkel",
+         "website": "website winkel"
+      },
+      "geometry":{
+         "coordinates":[
+            9.8737575,
+            57.0056746
+         ]
+      }
+   },
+   {
+      "properties":{
+         "address":"van Watervlietstraat 46, 2274 JZ, Voorburg, NL",
+         "phone": "023-5630986 (tel winkel)",
+         "title": "Naam winkel",
+         "website": "website winkel"
+      },
+      "geometry":{
+         "coordinates":[
+            4.3564585,
+            52.0706982
+         ]
+      }
+   }
+]

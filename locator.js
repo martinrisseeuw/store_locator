@@ -10,7 +10,7 @@ var map = L.map('map', {
 	zoom: 3,
   zoomControl:false,
   maxBounds: bounds
-}).setView([ 52.1626588, 5.3770023 ], 7 );
+}).setView([ 52.1626588, 5.3770023 ], 3 );
 
 var token = "pk.eyJ1IjoibWFydGluciIsImEiOiJOSlEzS2RZIn0.XIliSNqiTISmBRBvKLf2qg";
 if (!token) {
@@ -23,8 +23,6 @@ var gl = L.mapboxGL({
 
 }).addTo(map);
 
-// $('#search').keyup(search, addMarkers);
-//
 $("#search").keyup("keyup", addMarkers );
 
 
@@ -33,7 +31,6 @@ function search(){
   var searchValue = document.getElementById("search").value;
   return searchValue;
 }
-
 
 var markers = L.markerClusterGroup({
   polygonOptions: {
@@ -62,7 +59,7 @@ function addMarkers(){
 
   function shouldDrawItem( item ) {
     if( !searchValue ) return true;
-    return !!searchRegex.exec( item.properties.adres );
+    return !!searchRegex.exec( item.properties.address );
   }
 
   return geojson.forEach( addMarker );
@@ -71,9 +68,11 @@ function addMarkers(){
     if( !shouldDrawItem( item ) ) return;
 
     var title = item.properties.title,
+        phoneNumber = item.properties.phone,
         coordinates = item.geometry.coordinates,
         marker = L.marker( new L.LatLng( coordinates[ 1 ], coordinates[ 0 ] ), {
           title: title,
+          phone: phoneNumber,
           search: item.geometry.type,
           icon: greenIcon
         } ),
@@ -83,8 +82,8 @@ function addMarkers(){
         listItemAddress = document.createElement( 'p' );
 
     listItemTitle.textContent = title;
-    listItemAddress.textContent = 'Address: ' + item.properties.adres;
-    listItemTelephone.textContent = 'Telephone: ' + item.geometry.coordinates[ 0 ];
+    listItemAddress.textContent = 'Address: ' + item.properties.address;
+    listItemTelephone.textContent = 'Telephone: ' + phoneNumber;
 
     listItem.appendChild( listItemTitle );
     listItem.appendChild( listItemAddress );
@@ -96,21 +95,37 @@ function addMarkers(){
     markers.addLayer(marker);
     sidebar.appendChild(listItem);
 
-    listItem.addEventListener( 'mouseenter', listItemHover );
-
-    function listItemHover( event ) {
-      map.setView( new L.LatLng( coordinates[ 1 ], coordinates[ 0 ] ), 12
-        // ,{
-        //     pan: { animate: true , duration: 1 },
-        //     zoom: { animate: true  , duration: 10},
-        //     animate: true
-        // }
-      );
-    }
+    // listItem.addEventListener( 'mouseenter', listItemHover );
+    // listItem.addEventListener( 'click', listItemClick );
+    //
+    // function listItemHover( event ) {
+    //   map.setView( new L.LatLng( coordinates[ 1 ], coordinates[ 0 ] ), 7);
+    //   marker.openPopup();
+    // }
+    //
+    // function listItemClick( event ) {
+    //   map.setView( new L.LatLng( coordinates[ 1 ], coordinates[ 0 ] ), 16);
+    //   marker.openPopup();
+    // }
+    marker.on('click', function(e) {
+      openSidePanel();
+    })
   }
 }
 
-addMarkers();
+fetch('http://martinr.nl/stores.json').then(function(response) {
+
+  return response.json()
+  // console.log(response.type); // "opaque"
+}).then(function(json) {
+  //  console.log('parsed json', json)
+   geojson = json;
+  //  console.log(geojson);
+   addMarkers();
+ }).catch(function(ex) {
+   console.log('parsing failed', ex)
+ });
+
 // Adding the markers to th map
 map.addLayer(markers);
 
