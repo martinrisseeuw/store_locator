@@ -23,30 +23,9 @@ var gl = L.mapboxGL({
 
 }).addTo(map);
 
-$("#search").keyup("keyup", addMarkers );
+// $("#search").keyup("keyup", addMarkers );
 
-function populateSelectBox(){
-  var selectBox = document.getElementById('searchcountry');
 
-  fetch('http://martinr.nl/countries.json').then(function(response) {
-    return response.json();
-  })
-  .then(function(json) {
-    json.countries.map(function(countries, index ){
-      var option = new Option(countries.name, countries.cc);
-      selectBox.appendChild(option);
-    });
-    //  console.log(geojson);
-    // addOptionToSelectBox();
-  })
-  .catch(function(ex) {
-    console.log('parsing failed', ex)
-  });
-}
-function addOptionToSelectBox(){
-
-}
-populateSelectBox();
 
 function search(){
   var searchValue = document.getElementById("search").value;
@@ -73,16 +52,16 @@ var greenIcon = L.icon({
 
 // Looping through all markers creating the elements
 function addMarkers(){
-  var searchValue = document.getElementById( 'search' ).value,
-      searchRegex = searchValue && new RegExp( searchValue, 'i' );
+  // var searchValue = document.getElementById( 'search' ).value,
+  //     searchRegex = searchValue && new RegExp( searchValue, 'i' );
 
   markers.clearLayers();
   sidebar.innerHTML ="";
 
-  function shouldDrawItem( item ) {
-    if( !searchValue ) return true;
-    return !!searchRegex.exec( item.properties.address );
-  }
+  // function shouldDrawItem( item ) {
+  //   if( !searchValue ) return true;
+  //   return !!searchRegex.exec( item.properties.address );
+  // }
 
   return geojson.forEach( addMarker );
 
@@ -96,8 +75,8 @@ function addMarkers(){
           search: item.geometry.type,
           icon: greenIcon
         } );
-    listItem.dataset.index = i;
-    listItem.setAttribute("class", "store" + i);
+    // listItem.dataset.index = i;
+    // listItem.setAttribute("class", "store" + i);
 
     marker.bindPopup(title);
     markers.addLayer(marker);
@@ -128,14 +107,14 @@ function createItemForStore( storeInfo, coordinates ){
   listItem.appendChild( listItemAddress );
   listItem.appendChild( listItemTelephone );
 
-  listItem.addEventListener( 'mouseenter', listItemHover );
+  // listItem.addEventListener( 'mouseenter', listItemHover );
   listItem.addEventListener( 'click', listItemClick );
 
   return listItem;
 
-  function listItemHover( event ) {
-    map.setView( new L.LatLng( coordinates[ 1 ], coordinates[ 0 ] ), 7);
-  }
+  // function listItemHover( event ) {
+  //   map.setView( new L.LatLng( coordinates[ 1 ], coordinates[ 0 ] ), 7);
+  // }
 
   function listItemClick( event ) {
     map.setView( new L.LatLng( coordinates[ 1 ], coordinates[ 0 ] ), 16);
@@ -144,7 +123,7 @@ function createItemForStore( storeInfo, coordinates ){
 
 
 function getMarkersForCountry( country ){
-  fetch('http://martinr.nl/NL.json').then(function(response) {
+  fetch('http://martinr.nl/' + country + '.json').then(function(response) {
     return response.json()
     // console.log(response.type); // "opaque"
   })
