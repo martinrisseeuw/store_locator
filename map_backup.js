@@ -15,22 +15,29 @@
   var sideBarList = document.querySelector('.storelocator__sidebar__list');
 
 
+  // map.addControl(new mapboxgl.Geocoder({
+  //   flyTo: false,
+  //   zoom: 16,
+  //   container: sidebar
+  // }));
+
   var geocoder = new mapboxgl.Geocoder({
     flyTo: false,
     zoom: 16,
     container: sidebar
   });
 
-    geocoder.on('result', function(e) {
+
+
+  geocoder.on('result', function(e) {
     var result = e.result;
     console.log(result);
     map.flyTo({
       speed: flyToSpeed,
-      center: result.geometry.coordinates,
-      zoom: 11// Pass result and custom animation
+      center: result.geometry.coordinates
+      // Pass result and custom animation
     });
   });
-
   map.addControl(geocoder);
 
   map.on('load', function() {

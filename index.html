@@ -4,20 +4,19 @@
     <meta charset='utf-8' />
     <title></title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src="https://use.typekit.net/rkk5wvu.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.js'></script>
     <link href='map.css' rel='stylesheet' />
 </head>
 <body>
-
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.3.0/mapbox-gl-geocoder.js'></script>
-
-
 <section class="storelocator">
   <aside class="storelocator__sidebar expand">
     <header class="storelocator__sidebar__header">
       <h1>Store locator</h1>
       <p>Select a country where you would like to visit a store</p>
-
+      <div id="info"></div>
     </header>
     <ul class="storelocator__sidebar__list">
       <!-- items are loaded through javascript & json -->
