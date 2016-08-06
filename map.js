@@ -1,6 +1,6 @@
 (function(){
   mapboxgl.accessToken = 'pk.eyJ1IjoibGV4aXMiLCJhIjoiUXA2MVFYSSJ9.2LIrKSEKKZtCJKxe81xf_g';
-  var flyToSpeed = 0.3;
+  var flyToSpeed = 0.5;
 
   var map = new mapboxgl.Map({
       container: 'map',
@@ -16,19 +16,9 @@
 
 
   var geocoder = new mapboxgl.Geocoder({
-    flyTo: false,
+    flyTo: true,
     zoom: 16,
     container: sidebar
-  });
-
-    geocoder.on('result', function(e) {
-    var result = e.result;
-    console.log(result);
-    map.flyTo({
-      speed: flyToSpeed,
-      center: result.geometry.coordinates,
-      zoom: 11// Pass result and custom animation
-    });
   });
 
   map.addControl(geocoder);
@@ -110,45 +100,25 @@
             return;
         }
         var feature = features[0];
-
-        if(map.getZoom() <= 4){
-          map.flyTo({
-            center: features[0].geometry.coordinates,
-            zoom: map.getZoom() + 6,
-            speed: flyToSpeed
-          });
-        }
-        else{
-          map.flyTo({
-            center: feature.geometry.coordinates,
-            speed: flyToSpeed
-          });
-        }
         managePopUp(feature);
       }
 
-      // Use the same approach as above to indicate that the symbols are clickable
-      // by changing the cursor style to 'pointer'.
       map.on('mousemove', function (e) {
-          var features = map.queryRenderedFeatures(e.point, { layers: ['markers'], radius: 1000 });
-          map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+        var features = map.queryRenderedFeatures(e.point, { layers: ['markers'], radius: 1000 });
+        map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
       });
 
 
       map.on('click', function (e) {
-        // Use queryRenderedFeatures to get features at a click event's point
-        // Use layer option to avoid getting results from other layers
         var features = map.queryRenderedFeatures(e.point, { layers: ['cluster-count'] });
-        // if there are features within the given radius of the click event,
-        // fly to the location of the click event
         if (features.length) {
-            // Get coordinates from the symbol and center the map on those coordinates
-            map.flyTo({
-              center: features[0].geometry.coordinates,
-              zoom: map.getZoom() + 3,
-              speed: flyToSpeed
-            });
+          map.flyTo({
+            center: features[0].geometry.coordinates,
+            zoom: map.getZoom() + 3,
+            speed: flyToSpeed
+          });
         }
+        map.fire('flystart');
     });
   });
 
@@ -183,15 +153,12 @@
   var currentPops = [];
 
   function managePopUp(feature){
+
     currentPops.forEach(function(popup){
       popup._closeButton.click();
     });
-    currentPops = [];
 
-    map.flyTo({
-      center: feature.geometry.coordinates,
-      speed: flyToSpeed
-    });
+    currentPops = [];
 
     var popup = new mapboxgl.Popup();
     popup.setLngLat(feature.geometry.coordinates);
@@ -216,53 +183,48 @@
   function getCurrentInView(){
     var clientRect = document.getElementById('map').getBoundingClientRect();
 
+    var canvas = map.getCanvasContainer();
+    var rect = canvas.getBoundingClientRect();
+    var bounds = map.getBounds();
     var box = [
-      {x: 0, y: 0},
-      {x: (clientRect.right - clientRect.left), y: clientRect.bottom}
+      {x: 20, y: 20},
+      {x: (rect.width), y: (clientRect.bottom - 20)}
     ];
-
-    // console.log(box);
-
-    var features = map.queryRenderedFeatures(box, { layers: ['markers'] });
     sideBarList.innerHTML = "";
+    var features = map.queryRenderedFeatures(box, { layers: ['markers'] });
+    console.log(features);
     features.map(function(feature){
       makeListItem(feature);
     });
-
-    // if (box) {
-    //     box = document.createElement('div');
-    //     box.classList.add('boxdraw');
-    //     document.getElementById('map').appendChild(box);
-    // }
-    //  // Adjust width and xy position of the box element ongoing
-    //  var pos = 'translate(' + 0 + 'px,' + clientRect.top + 'px)';
-    //  box.style.transform = pos;
-    //  box.style.WebkitTransform = pos;
-    //  box.style.width = clientRect.right - clientRect.left + 'px';
-    //  box.style.height = clientRect.bottom - clientRect.top + 'px';
   }
 
 
   map.on('moveend', function() {
+    map.fire('flyend');
+  });
+
+  map.on('flyend', function(){
+    console.log('flyend');
     getCurrentInView();
   });
+
+  map.on('flystart', function(){
+  });
+
   map.on('zoomed', function() {
     getCurrentInView();
   });
 
-  // map.on('mousemove', function (e) {
-  //   document.getElementById('info').innerHTML =
-  //     JSON.stringify(e.point) + '<br />' +
-  //     'Zoom is:' + JSON.stringify(map.getZoom());
-  // });
+  map.on('load', function() {
+    setTimeout(getCurrentInView, 200);
+  });
+
 
   function calculateSidebarPosition(){
     var headerHeight =  document.querySelector('.storelocator__sidebar__header').offsetHeight;
     var sideBarList = document.querySelector('.storelocator__sidebar__list');
     var mapHeight = document.getElementById('map').offsetHeight;
 
-    console.log(mapHeight)
-    console.log(headerHeight)
     sideBarList.style.height = mapHeight - (headerHeight + 20) + 'px';
   }
   calculateSidebarPosition();
