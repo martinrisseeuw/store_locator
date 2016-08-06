@@ -190,9 +190,11 @@
       {x: 20, y: 20},
       {x: (rect.width), y: (clientRect.bottom - 20)}
     ];
-    sideBarList.innerHTML = "";
     var features = map.queryRenderedFeatures(box, { layers: ['markers'] });
+    sideBarList.innerHTML = "";
+
     console.log(features);
+
     features.map(function(feature){
       makeListItem(feature);
     });
@@ -216,8 +218,10 @@
   });
 
   map.on('load', function() {
-    setTimeout(getCurrentInView, 200);
+    setTimeout(getCurrentInView, 400);
   });
+
+  map.addControl(new mapboxgl.Navigation());
 
 
   function calculateSidebarPosition(){
@@ -228,4 +232,7 @@
     sideBarList.style.height = mapHeight - (headerHeight + 20) + 'px';
   }
   calculateSidebarPosition();
+  window.onresize = function(event) {
+    calculateSidebarPosition();
+  };
 })();
