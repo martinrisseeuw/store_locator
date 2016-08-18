@@ -1,13 +1,13 @@
 (function(){
   mapboxgl.accessToken = 'pk.eyJ1IjoibGV4aXMiLCJhIjoiUXA2MVFYSSJ9.2LIrKSEKKZtCJKxe81xf_g';
-  var flyToSpeed = 0.5;
+  var flyToSpeed = 0.8;
 
   var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/lexis/ciqm41fi50009cfkvx7oyl7vt',
       center: [5.3770023, 52.1626588],
-      zoom: 12 ,
-      minZoom: 4,
+      zoom: 6 ,
+      minZoom: 2.5,
       pitch: 30,
   });
 
@@ -30,8 +30,8 @@
           type: "geojson",
           data: "http://martinr.nl/all.geojson",
           cluster: true,
-          clusterMaxZoom: 14, // Max zoom to cluster points on
-          clusterRadius: 30 // Radius of each cluster when clustering points (defaults to 50)
+          clusterMaxZoom: 12, // Max zoom to cluster points on
+          clusterRadius: 60 // Radius of each cluster when clustering points (defaults to 50)
       });
 
       // Use the stores source to create five layers:
@@ -50,9 +50,9 @@
       // Display the earthquake data in three layers, each filtered to a range of
       // count values. Each range gets a different fill color.
       var layers = [
-          [150, '#84E7B9', 20],
-          [30, '#8488E7', 16],
-          [0, '#E78484', 12]
+          [170, '#222', 30],
+          [30, '#555', 20],
+          [0, '#888', 12]
       ];
 
       layers.forEach(function (layer, i) {
