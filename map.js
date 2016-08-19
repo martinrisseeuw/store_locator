@@ -77,6 +77,9 @@
         "id": "cluster-count",
         "type": "symbol",
         "source": "stores",
+        "paint": {
+          "text-color":"white"
+        },
         "layout": {
           "text-field": "{point_count}",
           "text-font": [
@@ -139,9 +142,13 @@
     listItemTitle.textContent = feature.properties.name;
     listItem.appendChild( listItemTitle );
     listItem.appendChild( listItemAddress );
-    listItem.appendChild( listItemTelephone );
-    listItem.appendChild( routeLink );
 
+
+    if(feature.properties.phone){
+      listItem.appendChild( listItemTelephone );
+    }
+
+    listItem.appendChild( routeLink );
     listItem.addEventListener("click", function(e){
       managePopUp(feature);
     });
