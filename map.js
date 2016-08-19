@@ -8,7 +8,7 @@
       center: [5.3770023, 52.1626588],
       zoom: 6 ,
       minZoom: 2.5,
-      pitch: 30,
+      pitch: 25,
   });
 
   var sidebar = document.querySelector('.storelocator__sidebar__header');
@@ -31,7 +31,7 @@
           data: "http://martinr.nl/all.geojson",
           cluster: true,
           clusterMaxZoom: 12, // Max zoom to cluster points on
-          clusterRadius: 60 // Radius of each cluster when clustering points (defaults to 50)
+          clusterRadius: 88 // Radius of each cluster when clustering points (defaults to 50)
       });
 
       // Use the stores source to create five layers:
@@ -50,9 +50,9 @@
       // Display the earthquake data in three layers, each filtered to a range of
       // count values. Each range gets a different fill color.
       var layers = [
-          [170, '#222', 30],
-          [30, '#555', 20],
-          [0, '#888', 12]
+          [150, 'rgba(0, 0, 0, 0.8)', 36],
+          [20, 'rgba(0, 0, 0, 0.7)', 26],
+          [0, 'rgba(0, 0, 0, 0.6)', 16]
       ];
 
       layers.forEach(function (layer, i) {
@@ -86,7 +86,7 @@
               "DIN Offc Pro Medium",
               "Arial Unicode MS Bold"
           ],
-          "text-size": 12
+          "text-size": 15
         }
       });
 
