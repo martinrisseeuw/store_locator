@@ -31,7 +31,7 @@
           data: "http://martinr.nl/all.geojson",
           cluster: true,
           clusterMaxZoom: 12, // Max zoom to cluster points on
-          clusterRadius: 88 // Radius of each cluster when clustering points (defaults to 50)
+          clusterRadius: 95 // Radius of each cluster when clustering points (defaults to 50)
       });
 
       // Use the stores source to create five layers:
