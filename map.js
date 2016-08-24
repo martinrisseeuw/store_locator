@@ -151,15 +151,8 @@
     listItem.addEventListener("click", function(e){
       managePopUp(feature);
     });
-    sideBarList.appendChild(listItem);
+
     sideBarList.insertBefore( listItem, sideBarList.firstChild );
-
-    var sideBarItems = [];
-    sideBarItems.push(listItem);
-
-    if(sideBarItems.length > 0) {
-      showMobileResults(true);
-    }
   }
 
   var currentPops = [];
@@ -192,6 +185,8 @@
     popup.addTo(map);
   }
 
+  var AllFeatures = [];
+
   function getCurrentInView(){
     var clientRect = document.getElementById('map').getBoundingClientRect();
 
@@ -203,10 +198,16 @@
       {x: (rect.width), y: (clientRect.bottom - 20)}
     ];
     var features = map.queryRenderedFeatures(box, { layers: ['markers'] });
+
+    var uniqueArray = features.filter(function(elem, pos) {
+      return features.indexOf(elem) == pos;
+    });
+
+    console.log('features', uniqueArray);
+    console.log('unique', uniqueArray);
+
     sideBarList.innerHTML = "";
-
-    console.log(features);
-
+    
     features.map(function(feature){
       makeListItem(feature);
     });
@@ -218,7 +219,6 @@
   });
 
   map.on('flyend', function(){
-    console.log('flyend');
     getCurrentInView();
   });
 
@@ -250,31 +250,39 @@
   // };
 
 
-  function showMobileResults(ListItemsAvailable){
+  function showMobileResults(){
     var ListActive = false;
     document.querySelector('.mobile__results').addEventListener('click', function(){
       if(!ListActive){
         document.querySelector('.storelocator__sidebar__list').classList.add('active');
         document.querySelector('.mobile__results').innerHTML = "Verberg lijst <span class='down__icon'></span>";
+        document.getElementById('map').style.transform = 'translate(0,' + queryElementHeight('.storelocator__sidebar') + 'px)';
+        document.body.style.overflow = "hidden";
         ListActive = true;
       }
       else if(ListActive){
         document.querySelector('.storelocator__sidebar__list').classList.remove('active');
         document.querySelector('.mobile__results').innerHTML = "Toon resultaten in lijst <span class='down__icon'></span>";
+        document.getElementById('map').style.transform = 'translate(0,' + queryElementHeight('.storelocator__sidebar') + 'px)';
+        document.body.style.overflow = "auto";
         ListActive = false;
       }
     });
   }
 })();
 
-  
-  function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        alert("Geolocation is not supported by this browser.");
-    }
+function queryElementHeight(e){
+  var x = document.querySelector(e).offsetHeight;
+  return x
+}
+
+function getLocation() {
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+      alert("Geolocation is not supported by this browser.");
   }
-  function showPosition(position) {
-      alert("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude); 
-  }
+}
+function showPosition(position) {
+    alert("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude); 
+}

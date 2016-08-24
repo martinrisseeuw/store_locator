@@ -64,6 +64,7 @@ body{
   margin: 0;
   width: 100%;
   float: left;
+  z-index: 2;
 }
 .storelocator__sidebar__header h1{
   margin: 0 0 .3em;
@@ -1046,6 +1047,7 @@ body{
     top: 0;
     width: 100%;
   }
+
   .mapboxgl-popup-content{
     max-width: 290px;
     padding: 10px;
@@ -1060,10 +1062,20 @@ body{
   }
   .storelocator__sidebar{
     width: 100%;
+    max-height: 90vh;
+    overflow: auto;
+    background: transparent;
+  }
+  .storelocator__sidebar__header{
+    background: white;
+    z-index: 3;
+    position: relative;
+  }
+  #map, .storelocator__sidebar__list{
+    transition: transform 0.35s ease-in;
   }
   .storelocator__sidebar__header{
     text-align: center;
-    background: white;
     color: black;
     border-bottom: 1px solid black;
   }
@@ -1106,7 +1118,7 @@ body{
 
   .storelocator__sidebar__list{
     visibility: hidden;
-    transform: scale(0);
+    transform: translateY(-100%);
     width: 0;
     height: 0;
   }
@@ -1114,7 +1126,7 @@ body{
     visibility: visible;
     height: auto;
     width: 100%;
-    transform: scale(1);
+    transform: none;
   }
   .geocoder-icon-search {
     background-image: url(data:image/png;base64,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);
@@ -1155,6 +1167,8 @@ body{
   }
   .storelocator__sidebar{
     height: 100vh;
+    background: white;
+    max-height: none;
   }
   .storelocator__sidebar__header p{
     display: block;
