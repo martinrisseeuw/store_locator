@@ -11,9 +11,8 @@
       pitch: 30,
   });
 
-  var sidebar = document.querySelector('.storelocator__sidebar__header');
+  var sidebar = document.querySelector('#geocoder__container');
   var sideBarList = document.querySelector('.storelocator__sidebar__list');
-
 
   var geocoder = new mapboxgl.Geocoder({
     flyTo: true,
@@ -152,9 +151,15 @@
     listItem.addEventListener("click", function(e){
       managePopUp(feature);
     });
-
     sideBarList.appendChild(listItem);
     sideBarList.insertBefore( listItem, sideBarList.firstChild );
+
+    var sideBarItems = [];
+    sideBarItems.push(listItem);
+
+    if(sideBarItems.length > 0) {
+      showMobileResults(true);
+    }
   }
 
   var currentPops = [];
@@ -238,8 +243,38 @@
 
     sideBarList.style.height = mapHeight - (headerHeight + 20) + 'px';
   }
-  calculateSidebarPosition();
-  window.onresize = function(event) {
-    calculateSidebarPosition();
-  };
+  // calculateSidebarPosition();
+
+  // window.onresize = function(event) {
+  //   calculateSidebarPosition();
+  // };
+
+
+  function showMobileResults(ListItemsAvailable){
+    var ListActive = false;
+    document.querySelector('.mobile__results').addEventListener('click', function(){
+      if(!ListActive){
+        document.querySelector('.storelocator__sidebar__list').classList.add('active');
+        document.querySelector('.mobile__results').innerHTML = "Verberg lijst <span class='down__icon'></span>";
+        ListActive = true;
+      }
+      else if(ListActive){
+        document.querySelector('.storelocator__sidebar__list').classList.remove('active');
+        document.querySelector('.mobile__results').innerHTML = "Toon resultaten in lijst <span class='down__icon'></span>";
+        ListActive = false;
+      }
+    });
+  }
 })();
+
+  
+  function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+  }
+  function showPosition(position) {
+      alert("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude); 
+  }

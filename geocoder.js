@@ -36,7 +36,7 @@
         n.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
             options: {
                 position: "top-left",
-                placeholder: "Search",
+                placeholder: "Adres, plaats, land.",
                 zoom: 16,
                 flyTo: !0
             },
