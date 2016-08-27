@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="v2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="--store-locator-web-copy-4" transform="translate(-210.000000, -525.000000)" fill="#000000">
+            <path d="M218.091309,525.129964 C218.097772,525.151196 217.003911,524.60439 216.769381,525.606919 L216.769381,528.076317 L211.230209,528.076317 C210.550624,528.076317 210,528.627432 210,529.30717 L210,535.769147 C210,536.448886 210.550624,537 211.230209,537 L211.845159,537 C212.524437,537 213.075368,536.448886 213.075368,535.769147 L213.075368,531.153449 L216.769381,531.153449 L216.769381,533.623155 C217.003911,534.617992 218.089462,534.096418 218.091309,534.100111 L221.726227,530.305084 C222.091258,529.923827 222.091258,529.306247 221.726227,528.92499 L218.091309,525.129964 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

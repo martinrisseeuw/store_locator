@@ -1,6 +1,7 @@
 (function(){
   mapboxgl.accessToken = 'pk.eyJ1IjoibGV4aXMiLCJhIjoiUXA2MVFYSSJ9.2LIrKSEKKZtCJKxe81xf_g';
   var flyToSpeed = 0.8;
+  var ListActive = false;
 
   var map = new mapboxgl.Map({
       container: 'map',
@@ -129,12 +130,18 @@
     listItemTitle = document.createElement( 'h2' ),
     listItemTelephone = document.createElement( 'p' ),
     listItemAddress = document.createElement( 'p' ),
-    routeLink = document.createElement('a');
+    routeLink = document.createElement('a'),
+    websiteLink = document.createElement('a');
 
     routeLink.href = 'https://maps.google.com?saddr=Current+Location&daddr=' + feature.geometry.coordinates[1] + ',' + feature.geometry.coordinates[0] + '';
     routeLink.classList.add('route__link');
     routeLink.setAttribute('target', '_blank');
-    routeLink.innerHTML = 'Get directions';
+    routeLink.innerHTML = '<span class="route__icon"></span> Route';
+
+    websiteLink.href = '#';
+    websiteLink.classList.add('website__link');
+    websiteLink.setAttribute('target', '_blank');
+    websiteLink.innerHTML = '<span class="website__icon"></span> Website';
 
     listItemAddress.textContent = feature.properties.address;
     listItemTelephone.textContent = 'Tel: ' + feature.properties.phone;
@@ -146,16 +153,16 @@
     if(feature.properties.phone){
       listItem.appendChild( listItemTelephone );
     }
-
+    listItem.appendChild( websiteLink );
     listItem.appendChild( routeLink );
     listItem.addEventListener("click", function(e){
       managePopUp(feature);
     });
-
     sideBarList.insertBefore( listItem, sideBarList.firstChild );
   }
 
   var currentPops = [];
+
 
   function managePopUp(feature){
 
@@ -240,36 +247,27 @@
     var headerHeight =  document.querySelector('.storelocator__sidebar__header').offsetHeight;
     var sideBarList = document.querySelector('.storelocator__sidebar__list');
     var mapHeight = document.getElementById('map').offsetHeight;
-
     sideBarList.style.height = mapHeight - (headerHeight + 20) + 'px';
   }
-  // calculateSidebarPosition();
-
-  // window.onresize = function(event) {
-  //   calculateSidebarPosition();
-  // };
-
 
   function showMobileResults(){
-    var ListActive = false;
-    document.querySelector('.mobile__results').addEventListener('click', function(){
-      if(!ListActive){
-        document.querySelector('.storelocator__sidebar__list').classList.add('active');
-        document.querySelector('.mobile__results').innerHTML = "Verberg lijst <span class='down__icon'></span>";
-        document.getElementById('map').style.transform = 'translate(0,' + queryElementHeight('.storelocator__sidebar') + 'px)';
-        document.body.style.overflow = "hidden";
-        ListActive = true;
-      }
-      else if(ListActive){
-        document.querySelector('.storelocator__sidebar__list').classList.remove('active');
-        document.querySelector('.mobile__results').innerHTML = "Toon resultaten in lijst <span class='down__icon'></span>";
-        document.getElementById('map').style.transform = 'translate(0,' + queryElementHeight('.storelocator__sidebar') + 'px)';
-        document.body.style.overflow = "auto";
-        ListActive = false;
-      }
-    });
+    if(!ListActive){
+      document.querySelector('.storelocator__sidebar__list').classList.add('active');
+      document.querySelector('.mobile__results').innerHTML = "Verberg lijst <span class='down__icon'></span>";
+      document.getElementById('map').style.transform = 'translate(0,' + queryElementHeight('.storelocator__sidebar') + 'px)';
+      document.body.style.overflow = "hidden";
+      ListActive = true;
+    }
+    else if(ListActive){
+      document.querySelector('.storelocator__sidebar__list').classList.remove('active');
+      document.querySelector('.mobile__results').innerHTML = "Toon resultaten in lijst <span class='down__icon'></span>";
+      document.getElementById('map').style.transform = 'translate(0,' + queryElementHeight('.storelocator__sidebar') + 'px)';
+      document.body.style.overflow = "auto";
+      ListActive = false;
+    }
   }
 })();
+
 
 function queryElementHeight(e){
   var x = document.querySelector(e).offsetHeight;
