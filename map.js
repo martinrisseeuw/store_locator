@@ -177,15 +177,25 @@
 
     if(feature.properties.phone){
       popup.setHTML(
+        '<div class="pop__flex">' +
+        '<div class="main__pop">' +
         '<h2>' + feature.properties.name + '</h2>'+
         '<p>' + feature.properties.address + '</p>'+
-        '<p>' + feature.properties.phone + '</p>'
+        '<p>' + feature.properties.phone + '</p>' +
+        '</div>' +
+        '<div class="pop__links"><div>website</div><div>route</div></div>' +
+        '</div>'
       );
     }
     else{
       popup.setHTML(
+        '<div class="pop__flex">' +
+        '<div class="main__pop">' +
         '<h2>' + feature.properties.name + '</h2>'+
-        '<p>' + feature.properties.address + '</p>'
+        '<p>' + feature.properties.address + '</p>'+
+        '</div>' +
+        '<div class="pop__links"><div>website</div><div>route</div></div>' +
+        '</div>'
       );
     }
     currentPops.push(popup);

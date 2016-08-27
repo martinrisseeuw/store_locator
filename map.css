@@ -1065,10 +1065,23 @@ body{
     top: 0;
     width: 100%;
   }
+  .pop__flex{
+    display: flex;
+  }
+  .pop__links div{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
 
   .mapboxgl-popup-content{
     max-width: 290px;
-    padding: 10px;
+    padding: 0px;
+  }
+  .main__pop{
+    padding: 15px;
   }
   .mapboxgl-popup-content h2{
     line-height: 1;
@@ -1206,7 +1219,6 @@ body{
   }
   .mapboxgl-popup-content{
     max-width: 300px;
-    padding: 15px;
   }
   #map {
     width: calc(100% - 350px);
