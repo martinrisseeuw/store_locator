@@ -158,6 +158,7 @@
     listItem.appendChild( routeLink );
     listItem.addEventListener("click", function(e){
       managePopUp(feature);
+      showMobileResults();
     });
     sideBarList.insertBefore( listItem, sideBarList.firstChild );
   }
@@ -175,6 +176,7 @@
 
     var popup = new mapboxgl.Popup();
     popup.setLngLat(feature.geometry.coordinates);
+
     popup.setHTML(
       `<div class="pop__flex">
         <div class="main__pop">
@@ -192,7 +194,7 @@
     if (window.innerWidth < 1024){
       map.flyTo({center: feature.geometry.coordinates});
     }
-    
+
     currentPops.push(popup);
     popup.addTo(map);
   }
@@ -200,27 +202,45 @@
   // var AllFeatures = [];
 
   function getCurrentInView(){
+    sideBarList.innerHTML = "";
+    
     var clientRect = document.getElementById('map').getBoundingClientRect();
 
     var canvas = map.getCanvasContainer();
     var rect = canvas.getBoundingClientRect();
     var bounds = map.getBounds();
     var box = [
-      {x: 20, y: 20},
-      {x: (rect.width), y: (clientRect.bottom - 20)}
+      {x: 40, y: 40},
+      {x: (rect.width - 40), y: (clientRect.bottom - 40)}
     ];
-    var features = map.queryRenderedFeatures(box, { layers: ['markers'] });
 
-    var uniqueArray = features.filter(function(elem, pos) {
-      return features.indexOf(elem) == pos;
-    });
+    const features = map.queryRenderedFeatures(box, { layers: ['markers'] });
 
-    console.log('features', uniqueArray);
-    console.log('unique', uniqueArray);
+    const uniqueNames = uniqueByPropertiesName(features)
+    console.log('filtered features', uniqueNames)
 
-    sideBarList.innerHTML = "";
+    function uniqueByPropertiesName(array = []) {
+  
+      const nameMap = {}
+      
+      return array.filter(findInMap)
+      
+      function findInMap(object = {}) {
+        const value = object['properties']['name']
+        const notUnique = nameMap[value]
+        if (notUnique) return false
+        else {
+          nameMap[value] = true
+          return true
+        }
+      }
+
+    }
+
     
-    features.map(function(feature){
+
+
+    uniqueNames.map(function(feature){
       makeListItem(feature);
     });
   }
@@ -259,14 +279,14 @@
     if(!ListActive){
       document.querySelector('.storelocator__sidebar__list').classList.add('active');
       document.querySelector('.mobile__results').innerHTML = "Verberg lijst <span class='down__icon'></span>";
-      document.getElementById('map').style.transform = 'translate(0,' + queryElementHeight('.storelocator__sidebar') + 'px)';
+      // document.getElementById('map').style.transform = 'translate(0,' + queryElementHeight('.storelocator__sidebar') + 'px)';
       document.body.style.overflow = "hidden";
       ListActive = true;
     }
     else if(ListActive){
       document.querySelector('.storelocator__sidebar__list').classList.remove('active');
       document.querySelector('.mobile__results').innerHTML = "Toon resultaten in lijst <span class='down__icon'></span>";
-      document.getElementById('map').style.transform = 'translate(0,' + queryElementHeight('.storelocator__sidebar') + 'px)';
+      // document.getElementById('map').style.transform = 'translate(0,' + queryElementHeight('.storelocator__sidebar') + 'px)';
       document.body.style.overflow = "auto";
       ListActive = false;
     }

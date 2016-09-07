@@ -99,7 +99,6 @@ body{
 .storelocator__sidebar__list li{
   opacity: .8;
   background: #fff;
-  transition: .2s ease-in-out;
   padding: 20px 30px;
   border-top: 1px solid rgba(0,0,0,.1);
   cursor: pointer;
@@ -338,9 +337,9 @@ body{
 .mapboxgl-popup-content {
     position: relative;
     background: #fff;
-    max-width: 300px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.10);
     pointer-events: auto;
+    max-width: 310px;
 }
 .mapboxgl-popup-anchor-top-left .mapboxgl-popup-content {
     border-top-left-radius: 0;
@@ -1070,6 +1069,8 @@ body{
   }
   .pop__links{
     display: flex;
+    width: 100%;
+    max-width: 100px;
     flex-direction: column;
     flex-grow: 1;
     flex-shrink: 1;
@@ -1093,7 +1094,6 @@ body{
   }
 
   .mapboxgl-popup-content{
-    max-width: 290px;
     padding: 0px;
   }
   .main__pop{
@@ -1120,9 +1120,7 @@ body{
     z-index: 3;
     position: relative;
   }
-  #map, .storelocator__sidebar__list{
-    transition: transform 0.35s ease-in;
-  }
+
   .storelocator__sidebar__header{
     text-align: center;
     color: black;
@@ -1241,9 +1239,6 @@ body{
     color: white;
     border-color: white;
     padding: 15px 10px 15px 30px;
-  }
-  .mapboxgl-popup-content{
-    max-width: 300px;
   }
   #map {
     width: calc(100% - 350px);
