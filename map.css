@@ -1059,6 +1059,14 @@ body{
 
 
 @media (min-width:320px) {
+  .websiteBtn{
+    display: none !important;
+  }
+  .callBtn{
+    display: flex;
+    border-bottom: 1px solid #DCDCDC !important;
+    border-top: none !important;
+  }
   #map{
     position: absolute;
     left: 0;
@@ -1068,12 +1076,31 @@ body{
   .pop__flex{
     display: flex;
   }
-  .pop__links div{
+  .pop__links{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    border-left: 1px solid #DCDCDC;
+  }
+  .pop__links a{
     padding: 20px;
     display: flex;
+    flex: 1;
+    color: black;
+    text-decoration: none;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
     align-items: center;
     justify-content: center;
-    flex-grow: 1;
+    font-size: 1.0666666667em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .pop__links a:nth-of-type(2){
+    border-top: 1px solid #DCDCDC;
   }
 
   .mapboxgl-popup-content{
@@ -1081,14 +1108,16 @@ body{
     padding: 0px;
   }
   .main__pop{
-    padding: 15px;
+    padding: 20px;
   }
   .mapboxgl-popup-content h2{
     line-height: 1;
     font-size: 14px;
+    margin: 0 0 .5em;
   }
   .mapboxgl-popup-content p{
     font-size: 13px;
+    margin: 0;
     color: #747474;
   }
   .storelocator__sidebar{
@@ -1180,6 +1209,14 @@ body{
 }
 
 @media (min-width:1024px) {
+  .callBtn{
+    display: none !important;
+  }
+  .websiteBtn{
+    display: flex !important;
+    border-bottom: 1px solid #DCDCDC !important;
+    border-top: none !important;
+  }
   .storelocator__sidebar__list{
     visibility: visible;
     transform: scale(1);
