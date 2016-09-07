@@ -1078,8 +1078,9 @@ body{
     border-left: 1px solid #DCDCDC;
   }
   .pop__links a{
-    padding: 20px;
+    padding: 10px;
     display: flex;
+    flex-wrap: wrap;
     flex: 1;
     color: black;
     text-decoration: none;
@@ -1091,6 +1092,23 @@ body{
     font-size: 1.0666666667em;
     text-transform: uppercase;
     font-weight: 700;
+  }
+  .pop__links a .website__icon,
+  .pop__links a .route__icon{
+    margin-bottom: 0.5em;
+    width: 16px;
+  }
+  .pop__links a .route__icon{
+    width: 12px;
+  }
+  .pop__links a span{
+    width: 100%;
+    text-align: center;
+  }
+  .pop__links div{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .mapboxgl-popup-content{

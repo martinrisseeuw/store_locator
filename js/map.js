@@ -185,9 +185,9 @@
         ${feature.properties.phone ? `<p>${feature.properties.phone}</p>` : ''}
       </div>
       <div class="pop__links">
-      ${feature.properties.website ? `<a class="websiteBtn" href="${feature.properties.website}">website</a>` : ''}
+      ${feature.properties.website ? `<a class="websiteBtn" href="${feature.properties.website}"><div><span class="website__icon"></span><span>website</span></div></a>` : ''}
       ${feature.properties.phone ? `<a class="callBtn" href="tel:${feature.properties.phone}">Bellen</a>` : ''}
-      <a href="https://maps.google.com?saddr=Current+Location&daddr=${feature.geometry.coordinates[1]},${feature.geometry.coordinates[0]}">route</a></div>
+      <a href="https://maps.google.com?saddr=Current+Location&daddr=${feature.geometry.coordinates[1]},${feature.geometry.coordinates[0]}"><div><span class="route__icon"></span><span>route</span></div></a>
       </div>`
     );
 
