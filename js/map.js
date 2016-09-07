@@ -189,6 +189,10 @@
       </div>`
     );
 
+    if (window.innerWidth < 1024){
+      map.flyTo({center: feature.geometry.coordinates});
+    }
+    
     currentPops.push(popup);
     popup.addTo(map);
   }

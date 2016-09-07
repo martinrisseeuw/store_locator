@@ -22,17 +22,10 @@ body{
 .leaflet-control-attribution{
   display: none;
 }
-.storelocator{
-  display: flex;
-  position: relative;
-}
 .storelocator__sidebar{
   width: 350px;
   color: white;
   margin: 0;
-  position: absolute;
-  left: 0;
-  top: 0;
   background: white;
   z-index: 9;
 }
@@ -1065,10 +1058,9 @@ body{
   .callBtn{
     display: flex;
     border-bottom: 1px solid #DCDCDC !important;
-    border-top: none !important;
   }
   #map{
-    position: absolute;
+    position: relative;
     left: 0;
     top: 0;
     width: 100%;
@@ -1098,9 +1090,6 @@ body{
     font-size: 1.0666666667em;
     text-transform: uppercase;
     font-weight: 700;
-  }
-  .pop__links a:nth-of-type(2){
-    border-top: 1px solid #DCDCDC;
   }
 
   .mapboxgl-popup-content{
@@ -1215,7 +1204,6 @@ body{
   .websiteBtn{
     display: flex !important;
     border-bottom: 1px solid #DCDCDC !important;
-    border-top: none !important;
   }
   .storelocator__sidebar__list{
     visibility: visible;
@@ -1270,6 +1258,11 @@ body{
   }
   .geocoder-icon-loading {
     background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDIwIDIwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6I0ZGRkZGRjt9LnN0MXtvcGFjaXR5OjAuMjtmaWxsOiNGRkZGRkY7ZW5hYmxlLWJhY2tncm91bmQ6bmV3ICAgIDt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTAsMnYzLjNjMi42LDAsNC43LDIuMSw0LjcsNC43SDE4QzE4LDUuNiwxNC40LDIsMTAsMnoiLz48cGF0aCBjbGFzcz0ic3QxIiBkPSJNMTAsMkM2LjgsMiwzLjcsNC4xLDIuNiw3LjFjLTEuMiwyLjktMC41LDYuNSwxLjksOC43YzIuNCwyLjQsNi40LDIuOSw5LjQsMS4yYzIuNS0xLjQsNC4yLTQuMiw0LjItN2MtMS4xLDAtMi4yLDAtMy4zLDBjMC4xLDIuMi0xLjcsNC4zLTMuOCw0LjZjLTIuMywwLjQtNC42LTAuOC01LjMtMi45QzQuOCw5LjcsNS42LDcuMSw3LjYsNkM4LjMsNS42LDkuMSw1LjMsMTAsNS4zQzEwLDQuMiwxMCwzLjEsMTAsMnoiLz48L3N2Zz4=);
+  }
+  .storelocator__sidebar{
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 }
 
