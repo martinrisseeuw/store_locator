@@ -1185,6 +1185,9 @@ body{
     background-size: contain;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAQCAMAAAA25D/gAAAACVBMVEUAAAA0NDQzMzNa9oIkAAAAAnRSTlMAgJsrThgAAAAySURBVHjaZcmhAQAwDMCgdv8f3bkIsMy+YKdP+/Uuz/Ysz/Ysz/as3/qu3/os36ZvpQNY3QHDMsn+PwAAAABJRU5ErkJggg==);
   }
+  .down__icon.active{
+    transform: rotate(180deg) translateY(1px);
+  }
   .location__icon {
     width: 16px;
     height: 16px;

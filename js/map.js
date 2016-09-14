@@ -2,6 +2,12 @@
   mapboxgl.accessToken = 'pk.eyJ1IjoibGV4aXMiLCJhIjoiUXA2MVFYSSJ9.2LIrKSEKKZtCJKxe81xf_g';
   var flyToSpeed = 0.8;
   var ListActive = false;
+  var bounds = [
+      [-180, 82],
+      [180, -82]
+  ];
+
+
 
   var map = new mapboxgl.Map({
       container: 'map',
@@ -10,6 +16,7 @@
       zoom: 6 ,
       minZoom: 2.5,
       pitch: 25,
+      maxBounds: bounds,
   });
 
   var sidebar = document.querySelector('#geocoder__container');
@@ -110,6 +117,7 @@
       map.on('mousemove', function (e) {
         var features = map.queryRenderedFeatures(e.point, { layers: ['markers'], radius: 1000 });
         map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+        console.log(map.getBounds())
       });
 
 
@@ -278,7 +286,7 @@
   function showMobileResults(){
     if(!ListActive){
       document.querySelector('.storelocator__sidebar__list').classList.add('active');
-      document.querySelector('.mobile__results').innerHTML = "Verberg lijst <span class='down__icon'></span>";
+      document.querySelector('.mobile__results').innerHTML = "Verberg lijst <span class='down__icon active'></span>";
       // document.getElementById('map').style.transform = 'translate(0,' + queryElementHeight('.storelocator__sidebar') + 'px)';
       document.body.style.overflow = "hidden";
       ListActive = true;
