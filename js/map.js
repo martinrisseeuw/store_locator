@@ -186,7 +186,7 @@
       </div>
       <div class="pop__links">
       ${feature.properties.website ? `<a class="websiteBtn" href="${feature.properties.website}"><div><span class="website__icon"></span><span>website</span></div></a>` : ''}
-      ${feature.properties.phone ? `<a class="callBtn" href="tel:${feature.properties.phone}">Bellen</a>` : ''}
+      ${feature.properties.phone ? `<a class="callBtn" href="tel:${feature.properties.phone}"><div><span class="bellen__icon"></span><span>bellen</span></div></a>` : ''}
       <a href="https://maps.google.com?saddr=Current+Location&daddr=${feature.geometry.coordinates[1]},${feature.geometry.coordinates[0]}"><div><span class="route__icon"></span><span>route</span></div></a>
       </div>`
     );
@@ -210,8 +210,8 @@
     var rect = canvas.getBoundingClientRect();
     var bounds = map.getBounds();
     var box = [
-      {x: 40, y: 40},
-      {x: (rect.width - 40), y: (clientRect.bottom - 40)}
+      {x: 0, y: 0},
+      {x: rect.width, y: clientRect.bottom}
     ];
 
     const features = map.queryRenderedFeatures(box, { layers: ['markers'] });

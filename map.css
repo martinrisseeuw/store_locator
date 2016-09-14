@@ -69,6 +69,18 @@ body{
   background-size: contain;
 }
 
+.bellen__icon{
+  background-image: url(bellen-icon.svg);
+  width: 14px !important;
+  margin-bottom: 0.3em;
+  height: 14px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  position: relative;
+  top: 0.2em;
+  background-size: contain;
+}
+
 .storelocator__sidebar__header{
   background: rgba(0,0,2,1);
   padding: 30px;
