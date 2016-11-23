@@ -7,9 +7,36 @@ body{
   font-family: "ff-meta-web-pro", sans-serif;
   background: #d6d6d6;
 }
+.select__item {
+  width: 100px;
+}
+.select-target.select-theme-default {
+  width: 100px !important;
+  margin-bottom: 0 !important;
+  text-align: left !important;
+  position: absolute !important;
+  right: 10px !important;
+  top: 50% !important;
+  transform: translateY(-50%);
+  z-index: 9999;
+}
+.logo {
+}
+.select.select-theme-default {
+  z-index: 99999;
+}
+.main__menu{
+  position: relative;
+  display: flex;
+  background: white;
+  height: 70px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
 #map {
   width: calc(100% - 350px);
-  height: 100vh;
+  height: calc(100vh - 70px);
   left: 350px;
   background: #d6d6d6;
   overflow: hidden;
@@ -352,6 +379,7 @@ body{
     box-shadow: 0 1px 2px rgba(0,0,0,0.10);
     pointer-events: auto;
     max-width: 310px;
+    padding: 0 !important;
 }
 .mapboxgl-popup-anchor-top-left .mapboxgl-popup-content {
     border-top-left-radius: 0;
@@ -1253,7 +1281,7 @@ body{
     display: none;
   }
   .storelocator__sidebar{
-    height: 100vh;
+    height: calc(100vh - 70px);
     background: white;
     max-height: none;
   }
@@ -1275,7 +1303,7 @@ body{
   }
   #map {
     width: calc(100% - 350px);
-    height: 100vh;
+    height: calc(100vh - 70px);
     left: 350px;
   }
   .geocoder-icon-search {
@@ -1290,7 +1318,7 @@ body{
   .storelocator__sidebar{
     position: absolute;
     left: 0;
-    top: 0;
+    top: 70px;
   }
 }
 

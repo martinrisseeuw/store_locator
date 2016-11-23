@@ -36,10 +36,11 @@
         n.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
             options: {
                 position: "top-left",
-                placeholder: "Adres, plaats, land.",
                 zoom: 16,
                 flyTo: !0
+                
             },
+
             onAdd: function(t) {
                 this.request = new XMLHttpRequest, this.container = this.options.container ? "string" == typeof this.options.container ? document.getElementById(this.options.container) : this.options.container : t.getContainer();
                 var e = document.createElement("div");

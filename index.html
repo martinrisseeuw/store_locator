@@ -4,13 +4,38 @@
     <meta charset='utf-8' />
     <title></title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link href='map.css' rel='stylesheet' />
     <script src="https://use.typekit.net/rkk5wvu.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.js'></script>
-    <link href='map.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.24.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.24.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" type="text/css" href="select-theme-default.css">
+    <script type="text/javascript" src="tether.min.js"></script>
+    <script type="text/javascript" src="select.min.js"></script>
 </head>
 <body>
 <section class="storelocator">
+  <header class="main__menu">
+    <a href="#" class="logo">
+        <img src="secrid-logo.png" width="114" height="21" alt="Secrid Wallets - designed and made in Holland">
+    </a>
+    <select id="languagedrop" class="select__item">
+      <option value="nl">nl</option>
+      <option value="en">en</option>
+      <option value="it">it</option>
+      <option value="de">de</option>
+      <option value="zhs">zhs</option>
+      <option value="zh">zh</option>
+      <option value="fi">fi</option>
+      <option value="pt">pt</option>
+      <option value="tr">tr</option>
+      <option value="es">es</option>
+      <option value="da">da</option>
+      <option value="no">no</option>
+      <option value="sv">sv</option>
+      <option value="pl">pl</option>
+    </select>
+  </header>
   <aside class="storelocator__sidebar expand">
     <header class="storelocator__sidebar__header">
       <h1>Verkooppunten</h1>
@@ -18,7 +43,6 @@
       <div id="info"></div>
       <div id="geocoder__container"></div>
       <div>
-<!--        <span class="use__location" onclick="getLocation()"><span class="location__icon"></span> Gebruik huidige locatie</span> -->
       </div>
       <span class="mobile__results">Toon resultaten in lijst <span class="down__icon"></span></span>
     </header>
@@ -29,8 +53,6 @@
   <div id="map" class="storelocator__map">
   </div>
 </section>
-
 <script src="main.min.js"></script>
-
 </body>
 </html>
