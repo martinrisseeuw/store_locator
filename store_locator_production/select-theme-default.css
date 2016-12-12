@@ -1,4 +1,5 @@
 .select-select {
+    display: none;
     pointer-events: none;
     position: absolute;
     opacity: 0;

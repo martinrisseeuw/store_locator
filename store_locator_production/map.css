@@ -45,28 +45,13 @@ body{
   z-index: 9999;
   border: 0 !important;
 }
-
-@media (max-width: 600px) {
-  .select-target.select-theme-default {
-    position: relative !important;
-    transform: none !important;
-    right: 0 !important;
-  }
-}
-
 .select-target.select-theme-default b:before {
   display: none !important;
 }
 .select-target.select-theme-default b {
   font-size: 1.7em;
 }
-@media (max-width: 600px) {
 .logo {
-  position: absolute !important;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  top: 50%;
-}
 }
 .select.select-theme-default {
   z-index: 99999;
@@ -1052,11 +1037,10 @@ body{
   top:17px;
   left:10px;
   }
-
 .mapboxgl-ctrl-geocoder button {
   padding:0;
   margin:0;
-  background-color: transparent;
+  background-color: transparent;;
   border:none;
   cursor:pointer;
   }
@@ -1224,7 +1208,6 @@ body{
     background: white;
     z-index: 3;
     position: relative;
-    overflow: auto;
   }
 
   .storelocator__sidebar__header{

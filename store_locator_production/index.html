@@ -4,8 +4,6 @@
     <meta charset='utf-8' />
     <title></title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <META HTTP-EQUIV='PRAGMA' CONTENT='NO-CACHE'>
-    <META HTTP-EQUIV='CACHE-CONTROL' CONTENT='NO-CACHE'>
     <link href='map.css' rel='stylesheet' />
     <script src="https://use.typekit.net/rkk5wvu.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
@@ -19,7 +17,7 @@
 
 <section class="storelocator">
   <header class="main__menu">
-    <button id="menu-start" onclick="goBack()" class="backbtn">Back</button>
+    <button id="menu-start" onclick="goBack()">Back</button>
     <a href="https://secrid.com" class="logo">
         <img src="secrid-logo.png" width="114" height="21" alt="Secrid Wallets - designed and made in Holland">
     </a>
@@ -38,8 +36,6 @@
       <option value="no" name="Norsk">Norsk</option>
       <option value="sv" name="Svenska">Svenska</option>
       <option value="pl" name="Polski">Polski</option>
-      <option value="ko" name="Svenska">Korean</option>
-      <option value="fr" name="Polski">French</option>
     </select>
   </header>
 
@@ -47,6 +43,7 @@
     <header class="storelocator__sidebar__header">
       <h1>Verkooppunten</h1>
       <p>Vind één van onze retail locaties bij u in de buurt. Navigeer op de kaart of type een zoekterm om te starten.</p>
+      <div id="info"></div>
       <div id="geocoder__container"></div>
       <div>
       </div>

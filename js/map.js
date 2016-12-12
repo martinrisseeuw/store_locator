@@ -1,5 +1,5 @@
 (function(){
-  var languages = {
+  const languages = {
     "en": {
       "title": "Points of sale",
       "body": "Find a Secrid retail location near you. Navigate on the map or type in a search term to start.",
@@ -9,7 +9,8 @@
       "phone": "Phone Number",
       "results": "Show results in list",
       "hide": "Hide list",
-      "call": "call"
+      "call": "call",
+      "back": "back"
     },
     "nl": {
       "title": "Verkooppunten",
@@ -20,7 +21,8 @@
       "phone": "Telefoon",
       "results": "Toon resultaten in lijst",
       "hide": "Hide list",
-      "call": "Bellen"
+      "call": "Bellen",
+      "back": "Terug"
     },
     "it": {
       "title": "Punti di vendita",
@@ -31,7 +33,8 @@
       "phone": "Numero di telefono",
       "results": "Mostra risultati in una lista",
       "hide": "Nascondi risultati",
-      "call": "Bellen"
+      "call": "Chiamata",
+      "back": "Indietro"
     },
     "de": {
       "title": "Verkaufsstellen",
@@ -42,7 +45,8 @@
       "phone": "Telefonnummer",
       "results": "Ergebnisse in einer Liste zeigen",
       "hide": "Ergebnisse verbergen",
-      "call": "Bellen"
+      "call": "Anrufen",
+      "back": "Zurück"
     },
     "zhs": {
       "title": "销售点",
@@ -53,7 +57,8 @@
       "phone": "电话号码",
       "results": "以列表形式显示结果",
       "hide": "隐藏结果",
-      "call": "Bellen"
+      "call": " 致电",
+      "back": "返回"
     },
     "zh": {
       "title": "銷售點",
@@ -64,7 +69,8 @@
       "phone": "電話號碼",
       "results": "以列表形式顯示結果",
       "hide": "隱藏結果",
-      "call": "Bellen"
+      "call": "致電",
+      "back": "返回"
     },
     "fi": {
       "title": "Myyntipisteet",
@@ -75,7 +81,8 @@
       "phone": "Puhelinnumero",
       "results": "Näytä tulokset listalla",
       "hide": "Piilota lista",
-      "call": "Bellen"
+      "call": "Soittaa",
+      "back": "Takaisin"
     },
     "pt": {
       "title": "Localizador de lojas",
@@ -86,7 +93,8 @@
       "phone": "Telefone",
       "results": "Mostrar resultados na lista",
       "hide": "Ocultar lista",
-      "call": "Bellen"
+      "call": "Telefonar",
+      "back": "Voltar"
     },
     "tr": {
       "title": "Satış noktaları",
@@ -97,7 +105,8 @@
       "phone": "Arama",
       "results": "Sonuçları listede göster",
       "hide": "Listeyi gizle",
-      "call": "Bellen"
+      "call": "Ara",
+      "back": "Geri dön"
     },
     "es": {
       "title": "Puntos de venta",
@@ -108,7 +117,8 @@
       "phone": "Contacto",
       "results": "Mostrar lista de resultados",
       "hide": "Ocultar lista",
-      "call": "Bellen"
+      "call": "Llamar",
+      "back": "De vuelta"
     },
     "da": {
       "title": "Salgssteder",
@@ -119,7 +129,8 @@
       "phone": "Ringe",
       "results": "Vis resultater på liste",
       "hide": "Skjul liste",
-      "call": "Bellen"
+      "call": "Ringe op",
+      "back": "Tilbage"
     },
     "no": {
       "title": "Salgssteder",
@@ -130,7 +141,8 @@
       "phone": "Ringe",
       "results": "Vis resultatene i listen",
       "hide": "Skjul listen",
-      "call": "Bellen"
+      "call": "Ringe",
+      "back": "Tilbake"
     },
     "sv": {
       "title": "Försäljningspunkter",
@@ -141,7 +153,8 @@
       "phone": "Ringa",
       "results": "Visa resultaten i listan",
       "hide": "Göm listan",
-      "call": "Bellen"
+      "call": "Ringa",
+      "back": "Tillbaka"
     },
     "pl": {
       "title": "Punkty sprzedaży",
@@ -152,17 +165,46 @@
       "phone": "Kontakt telefoniczny",
       "results": "Pokaż wyniki w postaci listy",
       "hide": "Ukryj",
-      "call": "Bellen"
+      "call": "Telefonować",
+      "back": "Wróć"
+    },
+    "fr": {
+      "title": "Points de vente",
+      "body": "Trouvez un point de vente de Secrid près de chez vous. Naviguez sur la carte ou tapez un terme de recherche pour commencer.",
+      "placeholder": "Adresse",
+      "website": "Site Web",
+      "route": "Itinéraire",
+      "phone": "Numéro de téléphone",
+      "results": "Afficher les résultats",
+      "hide": "Masquer la liste",
+      "call": "Appeler",
+      "back": "Retour"
+    },
+    "ko": {
+      "title": "판매처",
+      "body": "씨크리드 판매 위치를 찾아 보세요. 지도를 찾아 보거나 검색어를 넣어 보세요.",
+      "placeholder": "타운/도시",
+      "website": "웹사이트",
+      "route": "항공편",
+      "phone": "전화 번호",
+      "results": "리스트 결과 보기",
+      "hide": "숨겨진 리스트",
+      "call": "전화",
+      "back": "뒤로"
     }
   };
 
-  var currentLanguage = languages.nl;
+  const currentParLang = getParameterByName('lang');
+  let currentLanguage = languages[currentParLang] || languages.nl;
 
   document.getElementById('languagedrop').addEventListener("change", function(){
-    
-    var currentOption = this.options[this.selectedIndex].value;
-    var selectedLang = this.options[this.selectedIndex].value;
+    const currentOption = this.options[this.selectedIndex].value;
+    const selectedLang = this.options[this.selectedIndex].value;
     currentLanguage = languages[selectedLang];
+
+    let str = window.location.search
+    str = replaceQueryParam('lang', currentOption, str)
+    window.location = window.location.pathname + `#${str}`
 
     loadLanguage();
 
@@ -173,45 +215,51 @@
     document.querySelector('.storelocator__sidebar__header h1').innerHTML = `${currentLanguage.title}`
     document.querySelector('.storelocator__sidebar__header p').innerHTML = `${currentLanguage.body}`
     document.querySelector('.mapboxgl-ctrl-geocoder input').placeholder = `${currentLanguage.placeholder}`
+    document.querySelector('.backbtn').innerHTML = `${currentLanguage.back}`
     document.querySelector('.mobile__results').innerHTML = `${currentLanguage.results} <span class="down__icon"></span>`
   }
 
 
   mapboxgl.accessToken = 'pk.eyJ1IjoibGV4aXMiLCJhIjoiUXA2MVFYSSJ9.2LIrKSEKKZtCJKxe81xf_g';
-  var flyToSpeed = 0.8;
-  var ListActive = false;
-  var bounds = [
+  const flyToSpeed = 0.8;
+  let ListActive = false;
+
+  const bounds = [
       [-180, 82],
       [180, -82]
   ];
 
-  var map = new mapboxgl.Map({
+  const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/lexis/ciqm41fi50009cfkvx7oyl7vt',
       center: [5.3770023, 52.1626588],
       zoom: 6 ,
       minZoom: 2.5,
-      pitch: 25,
+      // pitch: 25,
       // maxBounds: bounds,
   });
 
-  var sidebar = document.querySelector('#geocoder__container');
-  var sideBarList = document.querySelector('.storelocator__sidebar__list');
+  const sidebar = document.querySelector('#geocoder__container');
+  const sideBarList = document.querySelector('.storelocator__sidebar__list');
 
-  var geocoder = new mapboxgl.Geocoder({
+  const geocoder = new mapboxgl.Geocoder({
     flyTo: true,
     zoom: 16,
     container: sidebar,
     placeholder: `${currentLanguage.placeholder}`,
+    accessToken: mapboxgl.accessToken
   });
 
+
   map.addControl(geocoder);
+
+
   document.querySelector('.mobile__results').addEventListener('click', showMobileResults);
 
   map.on('load', function() {
       map.addSource("stores", {
           type: "geojson",
-          data: "https://sharksoftware.nl/boomi_json/ALL.json",
+          data: "https://sq12w11pzk.execute-api.eu-central-1.amazonaws.com/prod/storelocator",
           cluster: true,
           clusterMaxZoom: 12, // Max zoom to cluster points on
           clusterRadius: 95 // Radius of each cluster when clustering points (defaults to 50)
@@ -232,7 +280,7 @@
 
       // Display the earthquake data in three layers, each filtered to a range of
       // count values. Each range gets a different fill color.
-      var layers = [
+      const layers = [
           [150, 'rgba(0, 0, 0, 0.8)', 36],
           [20, 'rgba(0, 0, 0, 0.7)', 26],
           [0, 'rgba(0, 0, 0, 0.6)', 16]
@@ -280,23 +328,23 @@
       });
 
       function popUpAction(point){
-        var features = map.queryRenderedFeatures(point, { layers: ['markers'] });
+        const features = map.queryRenderedFeatures(point, { layers: ['markers'] });
 
         if (!features.length) {
             return;
         }
-        var feature = features[0];
+        const feature = features[0];
         managePopUp(feature);
       }
 
       map.on('mousemove', function (e) {
-        var features = map.queryRenderedFeatures(e.point, { layers: ['markers'], radius: 1000 });
+        const features = map.queryRenderedFeatures(e.point, { layers: ['markers'], radius: 1000 });
         map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
       });
 
 
       map.on('click', function (e) {
-        var features = map.queryRenderedFeatures(e.point, { layers: ['cluster-count'] });
+        const features = map.queryRenderedFeatures(e.point, { layers: ['cluster-count'] });
         if (features.length) {
           map.flyTo({
             center: features[0].geometry.coordinates,
@@ -309,7 +357,7 @@
   });
 
   function makeListItem(feature){
-    var listItem = document.createElement( 'li' ),
+    const listItem = document.createElement( 'li' ),
     listItemTitle = document.createElement( 'h2' ),
     listItemTelephone = document.createElement( 'p' ),
     listItemAddress = document.createElement( 'p' ),
@@ -345,18 +393,17 @@
     sideBarList.insertBefore( listItem, sideBarList.firstChild );
   }
 
-  var currentPops = [];
+  let currentPops = [];
 
 
   function managePopUp(feature){
-
     currentPops.forEach(function(popup){
       popup._closeButton.click();
     });
 
     currentPops = [];
 
-    var popup = new mapboxgl.Popup();
+    const popup = new mapboxgl.Popup();
     popup.setLngLat(feature.geometry.coordinates);
 
     popup.setHTML(
@@ -381,25 +428,21 @@
     popup.addTo(map);
   }
 
-  // var AllFeatures = [];
-
   function getCurrentInView(){
     sideBarList.innerHTML = "";
     
-    var clientRect = document.getElementById('map').getBoundingClientRect();
+    const clientRect = document.getElementById('map').getBoundingClientRect();
 
-    var canvas = map.getCanvasContainer();
-    var rect = canvas.getBoundingClientRect();
-    var bounds = map.getBounds();
-    var box = [
+    const canvas = map.getCanvasContainer();
+    const rect = canvas.getBoundingClientRect();
+    const bounds = map.getBounds();
+    const box = [
       {x: 0, y: 0},
       {x: rect.width, y: clientRect.bottom}
     ];
 
     const features = map.queryRenderedFeatures(box, { layers: ['markers'] });
-
-    const uniqueNames = uniqueByPropertiesName(features)
-    console.log('filtered features', uniqueNames)
+    const uniqueNames = uniqueByPropertiesName(features);
 
     function uniqueByPropertiesName(array = []) {
   
@@ -419,41 +462,32 @@
 
     }
 
-    
-
-
     uniqueNames.map(function(feature){
       makeListItem(feature);
+
     });
   }
 
-
   map.on('moveend', function() {
-    map.fire('flyend');
-  });
-
-  map.on('flyend', function(){
+        // tooltip or overlay here
     getCurrentInView();
   });
 
-  map.on('flystart', function(){
-  });
-
-  map.on('zoomed', function() {
+  map.on('zoomend', function(){
     getCurrentInView();
   });
 
   map.on('load', function() {
-    setTimeout(getCurrentInView, 400);
+    setTimeout(getCurrentInView, 1500);
   });
 
-  map.addControl(new mapboxgl.Navigation({position: 'top-left'}));
+  map.addControl(new mapboxgl.Navigation());
 
 
   function calculateSidebarPosition(){
-    var headerHeight =  document.querySelector('.storelocator__sidebar__header').offsetHeight;
-    var sideBarList = document.querySelector('.storelocator__sidebar__list');
-    var mapHeight = document.getElementById('map').offsetHeight;
+    const headerHeight =  document.querySelector('.storelocator__sidebar__header').offsetHeight;
+    const sideBarList = document.querySelector('.storelocator__sidebar__list');
+    const mapHeight = document.getElementById('map').offsetHeight;
     sideBarList.style.height = mapHeight - (headerHeight + 20) + 'px';
   }
 
@@ -474,11 +508,28 @@
       ListActive = false;
     }
   }
+
+
+
+
+  document.addEventListener("DOMContentLoaded", function(event) {
+    loadLanguage();
+    SelectElement(currentParLang);
+    createSelectElements();
+
+    if(currentParLang != null) {
+      const languageName = document.querySelector('option[value="' + currentParLang + '"]').getAttribute("name");
+      document.querySelector('.select-target').innerHTML = `${languageName} <b></b>`
+    } else {
+      document.querySelector('.select-target').innerHTML = `Nederlands <b></b>`
+    }
+  });
 })();
 
 
+
 function queryElementHeight(e){
-  var x = document.querySelector(e).offsetHeight;
+  const x = document.querySelector(e).offsetHeight;
   return x
 }
 
@@ -500,9 +551,50 @@ function getParameterByName(name, url) {
     url = window.location.href;
   }
   name = name.replace(/[\[\]]/g, "\\$&");
-  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+  const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
       results = regex.exec(url);
   if (!results) return null;
   if (!results[2]) return '';
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
+
+function replaceQueryParam(param, newval, search) {
+    const regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+    const query = search.replace(regex, "$1").replace(/&$/, '');
+
+    return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+}
+
+function SelectElement(valueToSelect) {    
+  const element = document.getElementById('languagedrop');
+  element.value = valueToSelect;
+}
+
+function createSelectElements(){
+  const selectBoxes = Array.prototype.slice.call(document.querySelectorAll('.select__item'));
+  
+  selectBoxes.map(function(el) {
+    const selectBoxWidth = el.offsetWidth;
+
+    let selectInstance = new Select({
+      el: el,
+      className: 'select-theme-default',
+      useNative: false
+    });
+    setSize(selectBoxWidth);
+  });
+}
+
+function goBack() {
+  window.history.back();
+}
+
+function setSize(selectBoxWidth){
+  const dropDownBoxes = Array.prototype.slice.call(document.querySelectorAll('.select.select-theme-default'));
+  dropDownBoxes.map(function(el) {
+    el.style.width = selectBoxWidth + 'px';
+  });
+}
+
+

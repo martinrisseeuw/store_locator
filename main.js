@@ -1,27 +1,3 @@
-'use strict';
-
-function createSelectElements() {
-  var selectBoxes = Array.prototype.slice.call(document.querySelectorAll('.select__item'));
-  selectBoxes.map(function (el) {
-    var selectBoxWidth = el.offsetWidth;
-    var selectInstance = new Select({
-      el: el,
-      className: 'select-theme-default'
-    });
-    setSize(selectBoxWidth);
-  });
-}
-
-function setSize(selectBoxWidth) {
-  var dropDownBoxes = Array.prototype.slice.call(document.querySelectorAll('.select.select-theme-default'));
-  dropDownBoxes.map(function (el) {
-    el.style.width = selectBoxWidth + 'px';
-  });
-}
-
-document.addEventListener("DOMContentLoaded", function (event) {
-  createSelectElements();
-});
 "use strict";
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -65,11 +41,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         n.prototype = mapboxgl.util.inherit(mapboxgl.Control, {
             options: {
                 position: "top-left",
+                placeholder: "Adres, plaats, land.",
                 zoom: 16,
                 flyTo: !0
-
             },
-
             onAdd: function onAdd(t) {
                 this.request = new XMLHttpRequest(), this.container = this.options.container ? "string" == typeof this.options.container ? document.getElementById(this.options.container) : this.options.container : t.getContainer();
                 var e = document.createElement("div");
@@ -573,19 +548,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         var s = Object.prototype.hasOwnProperty;
     }, {}]
 }, {}, [1]);
-'use strict';
-
-var language = {
-    en: {
-        title: 'Points of sale',
-        body: 'Find a Secrid retail location near you. Navigate on the map or type in a search term to start.',
-        placeholder: 'Address, Town/City, Country',
-        route: 'Directions',
-        phone: 'Phone Number',
-        results: 'Show results in list',
-        hide: 'Hide list'
-    }
-};
 "use strict";
 
 (function () {
@@ -599,7 +561,8 @@ var language = {
       "phone": "Phone Number",
       "results": "Show results in list",
       "hide": "Hide list",
-      "call": "call"
+      "call": "call",
+      "back": "back"
     },
     "nl": {
       "title": "Verkooppunten",
@@ -610,7 +573,8 @@ var language = {
       "phone": "Telefoon",
       "results": "Toon resultaten in lijst",
       "hide": "Hide list",
-      "call": "Bellen"
+      "call": "Bellen",
+      "back": "Terug"
     },
     "it": {
       "title": "Punti di vendita",
@@ -621,7 +585,8 @@ var language = {
       "phone": "Numero di telefono",
       "results": "Mostra risultati in una lista",
       "hide": "Nascondi risultati",
-      "call": "Bellen"
+      "call": "Chiamata",
+      "back": "Indietro"
     },
     "de": {
       "title": "Verkaufsstellen",
@@ -632,7 +597,8 @@ var language = {
       "phone": "Telefonnummer",
       "results": "Ergebnisse in einer Liste zeigen",
       "hide": "Ergebnisse verbergen",
-      "call": "Bellen"
+      "call": "Anrufen",
+      "back": "Zurück"
     },
     "zhs": {
       "title": "销售点",
@@ -643,7 +609,8 @@ var language = {
       "phone": "电话号码",
       "results": "以列表形式显示结果",
       "hide": "隐藏结果",
-      "call": "Bellen"
+      "call": " 致电",
+      "back": "返回"
     },
     "zh": {
       "title": "銷售點",
@@ -654,7 +621,8 @@ var language = {
       "phone": "電話號碼",
       "results": "以列表形式顯示結果",
       "hide": "隱藏結果",
-      "call": "Bellen"
+      "call": "致電",
+      "back": "返回"
     },
     "fi": {
       "title": "Myyntipisteet",
@@ -665,7 +633,8 @@ var language = {
       "phone": "Puhelinnumero",
       "results": "Näytä tulokset listalla",
       "hide": "Piilota lista",
-      "call": "Bellen"
+      "call": "Soittaa",
+      "back": "Takaisin"
     },
     "pt": {
       "title": "Localizador de lojas",
@@ -676,7 +645,8 @@ var language = {
       "phone": "Telefone",
       "results": "Mostrar resultados na lista",
       "hide": "Ocultar lista",
-      "call": "Bellen"
+      "call": "Telefonar",
+      "back": "Voltar"
     },
     "tr": {
       "title": "Satış noktaları",
@@ -687,7 +657,8 @@ var language = {
       "phone": "Arama",
       "results": "Sonuçları listede göster",
       "hide": "Listeyi gizle",
-      "call": "Bellen"
+      "call": "Ara",
+      "back": "Geri dön"
     },
     "es": {
       "title": "Puntos de venta",
@@ -698,7 +669,8 @@ var language = {
       "phone": "Contacto",
       "results": "Mostrar lista de resultados",
       "hide": "Ocultar lista",
-      "call": "Bellen"
+      "call": "Llamar",
+      "back": "De vuelta"
     },
     "da": {
       "title": "Salgssteder",
@@ -709,7 +681,8 @@ var language = {
       "phone": "Ringe",
       "results": "Vis resultater på liste",
       "hide": "Skjul liste",
-      "call": "Bellen"
+      "call": "Ringe op",
+      "back": "Tilbage"
     },
     "no": {
       "title": "Salgssteder",
@@ -720,7 +693,8 @@ var language = {
       "phone": "Ringe",
       "results": "Vis resultatene i listen",
       "hide": "Skjul listen",
-      "call": "Bellen"
+      "call": "Ringe",
+      "back": "Tilbake"
     },
     "sv": {
       "title": "Försäljningspunkter",
@@ -731,7 +705,8 @@ var language = {
       "phone": "Ringa",
       "results": "Visa resultaten i listan",
       "hide": "Göm listan",
-      "call": "Bellen"
+      "call": "Ringa",
+      "back": "Tillbaka"
     },
     "pl": {
       "title": "Punkty sprzedaży",
@@ -742,17 +717,46 @@ var language = {
       "phone": "Kontakt telefoniczny",
       "results": "Pokaż wyniki w postaci listy",
       "hide": "Ukryj",
-      "call": "Bellen"
+      "call": "Telefonować",
+      "back": "Wróć"
+    },
+    "fr": {
+      "title": "Points de vente",
+      "body": "Trouvez un point de vente de Secrid près de chez vous. Naviguez sur la carte ou tapez un terme de recherche pour commencer.",
+      "placeholder": "Adresse",
+      "website": "Site Web",
+      "route": "Itinéraire",
+      "phone": "Numéro de téléphone",
+      "results": "Afficher les résultats",
+      "hide": "Masquer la liste",
+      "call": "Appeler",
+      "back": "Retour"
+    },
+    "ko": {
+      "title": "판매처",
+      "body": "씨크리드 판매 위치를 찾아 보세요. 지도를 찾아 보거나 검색어를 넣어 보세요.",
+      "placeholder": "타운/도시",
+      "website": "웹사이트",
+      "route": "항공편",
+      "phone": "전화 번호",
+      "results": "리스트 결과 보기",
+      "hide": "숨겨진 리스트",
+      "call": "전화",
+      "back": "뒤로"
     }
   };
 
-  var currentLanguage = languages.nl;
+  var currentParLang = getParameterByName('lang');
+  var currentLanguage = languages[currentParLang] || languages.nl;
 
   document.getElementById('languagedrop').addEventListener("change", function () {
-
     var currentOption = this.options[this.selectedIndex].value;
     var selectedLang = this.options[this.selectedIndex].value;
     currentLanguage = languages[selectedLang];
+
+    var str = window.location.search;
+    str = replaceQueryParam('lang', currentOption, str);
+    window.location = window.location.pathname + ("#" + str);
 
     loadLanguage();
 
@@ -763,12 +767,14 @@ var language = {
     document.querySelector('.storelocator__sidebar__header h1').innerHTML = "" + currentLanguage.title;
     document.querySelector('.storelocator__sidebar__header p').innerHTML = "" + currentLanguage.body;
     document.querySelector('.mapboxgl-ctrl-geocoder input').placeholder = "" + currentLanguage.placeholder;
+    document.querySelector('.backbtn').innerHTML = "" + currentLanguage.back;
     document.querySelector('.mobile__results').innerHTML = currentLanguage.results + " <span class=\"down__icon\"></span>";
   }
 
   mapboxgl.accessToken = 'pk.eyJ1IjoibGV4aXMiLCJhIjoiUXA2MVFYSSJ9.2LIrKSEKKZtCJKxe81xf_g';
   var flyToSpeed = 0.8;
   var ListActive = false;
+
   var bounds = [[-180, 82], [180, -82]];
 
   var map = new mapboxgl.Map({
@@ -776,8 +782,7 @@ var language = {
     style: 'mapbox://styles/lexis/ciqm41fi50009cfkvx7oyl7vt',
     center: [5.3770023, 52.1626588],
     zoom: 6,
-    minZoom: 2.5,
-    pitch: 25
+    minZoom: 2.5
   });
 
   var sidebar = document.querySelector('#geocoder__container');
@@ -787,16 +792,18 @@ var language = {
     flyTo: true,
     zoom: 16,
     container: sidebar,
-    placeholder: "" + currentLanguage.placeholder
+    placeholder: "" + currentLanguage.placeholder,
+    accessToken: mapboxgl.accessToken
   });
 
   map.addControl(geocoder);
+
   document.querySelector('.mobile__results').addEventListener('click', showMobileResults);
 
   map.on('load', function () {
     map.addSource("stores", {
       type: "geojson",
-      data: "https://sharksoftware.nl/boomi_json/ALL.json",
+      data: "https://sq12w11pzk.execute-api.eu-central-1.amazonaws.com/prod/storelocator",
       cluster: true,
       clusterMaxZoom: 12, // Max zoom to cluster points on
       clusterRadius: 95 // Radius of each cluster when clustering points (defaults to 50)
@@ -920,7 +927,6 @@ var language = {
   var currentPops = [];
 
   function managePopUp(feature) {
-
     currentPops.forEach(function (popup) {
       popup._closeButton.click();
     });
@@ -940,8 +946,6 @@ var language = {
     popup.addTo(map);
   }
 
-  // var AllFeatures = [];
-
   function getCurrentInView() {
     sideBarList.innerHTML = "";
 
@@ -953,9 +957,7 @@ var language = {
     var box = [{ x: 0, y: 0 }, { x: rect.width, y: clientRect.bottom }];
 
     var features = map.queryRenderedFeatures(box, { layers: ['markers'] });
-
     var uniqueNames = uniqueByPropertiesName(features);
-    console.log('filtered features', uniqueNames);
 
     function uniqueByPropertiesName() {
       var array = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
@@ -983,24 +985,19 @@ var language = {
   }
 
   map.on('moveend', function () {
-    map.fire('flyend');
-  });
-
-  map.on('flyend', function () {
+    // tooltip or overlay here
     getCurrentInView();
   });
 
-  map.on('flystart', function () {});
-
-  map.on('zoomed', function () {
+  map.on('zoomend', function () {
     getCurrentInView();
   });
 
   map.on('load', function () {
-    setTimeout(getCurrentInView, 400);
+    setTimeout(getCurrentInView, 1500);
   });
 
-  map.addControl(new mapboxgl.Navigation({ position: 'top-left' }));
+  map.addControl(new mapboxgl.Navigation());
 
   function calculateSidebarPosition() {
     var headerHeight = document.querySelector('.storelocator__sidebar__header').offsetHeight;
@@ -1025,6 +1022,19 @@ var language = {
       ListActive = false;
     }
   }
+
+  document.addEventListener("DOMContentLoaded", function (event) {
+    loadLanguage();
+    SelectElement(currentParLang);
+    createSelectElements();
+
+    if (currentParLang != null) {
+      var languageName = document.querySelector('option[value="' + currentParLang + '"]').getAttribute("name");
+      document.querySelector('.select-target').innerHTML = languageName + " <b></b>";
+    } else {
+      document.querySelector('.select-target').innerHTML = "Nederlands <b></b>";
+    }
+  });
 })();
 
 function queryElementHeight(e) {
@@ -1054,4 +1064,42 @@ function getParameterByName(name, url) {
   if (!results) return null;
   if (!results[2]) return '';
   return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function replaceQueryParam(param, newval, search) {
+  var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+  var query = search.replace(regex, "$1").replace(/&$/, '');
+
+  return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+}
+
+function SelectElement(valueToSelect) {
+  var element = document.getElementById('languagedrop');
+  element.value = valueToSelect;
+}
+
+function createSelectElements() {
+  var selectBoxes = Array.prototype.slice.call(document.querySelectorAll('.select__item'));
+
+  selectBoxes.map(function (el) {
+    var selectBoxWidth = el.offsetWidth;
+
+    var selectInstance = new Select({
+      el: el,
+      className: 'select-theme-default',
+      useNative: false
+    });
+    setSize(selectBoxWidth);
+  });
+}
+
+function goBack() {
+  window.history.back();
+}
+
+function setSize(selectBoxWidth) {
+  var dropDownBoxes = Array.prototype.slice.call(document.querySelectorAll('.select.select-theme-default'));
+  dropDownBoxes.map(function (el) {
+    el.style.width = selectBoxWidth + 'px';
+  });
 }
